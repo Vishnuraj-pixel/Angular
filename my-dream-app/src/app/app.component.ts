@@ -20,6 +20,14 @@ import { Component } from '@angular/core';
     <h2 [style.color] = "hasError ? 'red': 'green'">Style Binding 1</h2>
 
     <h2 [style.color] = "highlightColor">Style Binding 2</h2>
+
+    <h2 [ngStyle] = "titleStyles">Style Binding 2</h2>
+
+    <button (click)= "onClick($event)">Greet</button>
+
+    <button (click)= "greeting ='Welcome Vishwas'">Greet</button>
+
+    {{greeting}}
   `,
   styles: [`
    .text-success {
@@ -45,10 +53,22 @@ export class AppComponent {
   isDisabled = false;
   hasError = true;
   isSpecial = true;
+  greeting = "";
   messageClassess = {
     "text-success": !this.hasError,
     "text-danger": this.hasError,
     "text-special": this.isSpecial
   }
+
+  titleStyles = {
+    color : "blue",
+    fontStyle : "italic"
+  }
+
+  onClick (event: { type: string; }) {
+    console.log(event);
+    this.greeting = event.type;
+  }
+
   highlightColor = "Yellow";
 }
