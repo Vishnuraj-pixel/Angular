@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient} from '@angular/common/http';
+import {  HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IEmployee } from './employee';
+import { catchError, tap, map } from 'rxjs/operators';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class EmployeeService {
@@ -12,5 +15,13 @@ export class EmployeeService {
 
   getEmployees (): Observable<IEmployee[]> {
     return this.http.get<IEmployee[]>(this._url);
-  }
+  } 
+  
+ 
+  // errorHandler(error: HttpErrorResponse) {
+  //   return Observable.throw(error.message  || "Server Error");
+  // }
+  
 }
+
+
