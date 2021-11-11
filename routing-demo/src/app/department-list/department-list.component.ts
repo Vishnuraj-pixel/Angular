@@ -8,9 +8,11 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router'
       department-list
     </h3>
     <ul class="items">
-      <li (click)="onSelect(department)" [class.selected]="isSelected(department)" *ngFor = "let department of departments">
+    <div class="btn-group-vertical">
+      <li class="btn btn-info" (click)="onSelect(department)" [class.selected]="isSelected(department)" *ngFor = "let department of departments">
         <span class= "badge">{{department.id}}</span>{{department.name}}
       </li>
+    </div>
     </ul>
   `,
   styles: [
@@ -37,7 +39,8 @@ export class DepartmentListComponent implements OnInit {
     });
   }
   onSelect(department:any) {
-    this.router.navigate(['/departments', department.id])
+    // this.router.navigate(['/departments', department.id])
+    this.router.navigate([department.id], {relativeTo:this.route});
   }
 
   isSelected(department:any) {
