@@ -26,8 +26,8 @@ export class AppComponent {
 
   onSubmit() {
     this._enrollmentService.enroll(this.userModel).subscribe(
-      (data:any) => console.log('Success! ',data),
-      (error:any) => console.error('Error! ', error)
+      data => console.log('Success! ',data),
+      error => console.error('Error! ', error)
     )
   }
 }

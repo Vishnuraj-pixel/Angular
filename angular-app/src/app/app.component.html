@@ -1,5 +1,9 @@
 <div class="container-fluid md-5">
   <h1>Bootcamp Enrollment Form</h1>
+
+  <!-- <div class="alert alert-danger" *ngIf="errorMsg">
+    {{errorMsg}}
+  </div> -->
   <form #userForm = "ngForm" (ngSubmit)="onSubmit()" novalidate>
 
     {{  userForm.value  | json  }}
@@ -44,7 +48,9 @@
       </div>
     </div>
     <div class="form-group">
-      <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value )"required #topic="ngModel" [class.is-invalid]="topicHasError || name.untouched" class="custom-select" name="topic" [(ngModel)]="userModel.topic">
+      <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value )" required #topic="ngModel" 
+      [class.is-invalid]="topicHasError || name.untouched" class="form-select" aria-label="Default select example" 
+      name="topic" [(ngModel)]="userModel.topic">
         <option value="default">I am interested in</option>
         <option *ngFor= "let topic of topics">{{  topic }}</option>
       </select> 
